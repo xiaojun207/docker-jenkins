@@ -23,10 +23,10 @@ docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v /data/jenkins_home:/
 * -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker ，是为了让jenkins可以支持使用宿主机的docker命令，方便docker镜像操作。
 
 # 国内插件安装慢
-可在容器首次“docker run ... ” 后，进入jenkins_home目录下的配置目录，并执行：
+可在容器首次“docker run ... ” 后，进入jenkins_home目录下的更新目录，修改default.json，如下执行：
 
 ```
-cd ${JENKINS_HOME}/updates  #进入更新配置位置
+cd ${JENKINS_HOME}/updates  #进入更新配置位置，修改default.json文件
 
 sed -i 's/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g' default.json && sed -i 's/http:\/\/www.google.com/https:\/\/www.baidu.com/g' default.json
 ```
